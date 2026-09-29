@@ -24,6 +24,7 @@ dependencies = [
     "litellm==1.103.0",
     "python-dotenv==1.2.3",
     "sap-ai-sdk-gen==7.4.1",
+    "a2a-sdk==1.2.0"
 ]
 
 
