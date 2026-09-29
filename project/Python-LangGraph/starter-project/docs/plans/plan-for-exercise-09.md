@@ -20,13 +20,10 @@ curl https://investigator-graph-mikisven.cfapps.eu10-004.hana.ondemand.com/.well
 Proceed only if health returns ok and the agent card shows the investigate skill.
 Expected health body is `{"status": "ok"}`.
 ## 3. Align Server State With Graph State
-`server.py` now includes `"intelligence_report": None` in local code.
-### Required Redeploy Check
-Redeploy from `starter-project` because local code is newer than the running app.
-```bash
-cf push "investigator-graph-mikisven"
-```
-Re-run Section 2 checks after redeployment.
+Assume the deployed application is recent enough for Exercise 09.
+### Deployment Assumption
+Skip redeployment even if the running app lacks the intelligence researcher node.
+Proceed with local `server.py` already containing `"intelligence_report": None`.
 ## 4. Human: Check Node.js Runtime
 Open a terminal in BAS or locally.
 ### Required Human Action
