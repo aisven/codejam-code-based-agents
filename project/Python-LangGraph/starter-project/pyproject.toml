@@ -23,6 +23,7 @@ dependencies = [
     "langchain-litellm==0.10.0",
     "litellm==1.103.0",
     "python-dotenv==1.2.3",
+    "sap-ai-sdk-gen==7.4.1",
 ]
 
 
