@@ -14,5 +14,5 @@ applications:
     env:
       LITELLM_PROVIDER: sap
       AICORE_RESOURCE_GROUP: ai-agents-codejam
-      RPT1_DEPLOYMENT_URL: <YOUR_RPT1_DEPLOYMENT_URL>
+      RPT1_DEPLOYMENT_URL: "https://api.ai.prod.eu-central-1.aws.ml.hana.ondemand.com/v2/inference/deployments/###/predict"
       BP_PYTHON_VERSION: "3.13.11"
