@@ -24,7 +24,7 @@ test:       ## Run all the tests
 
 .PHONY: run-pipeline
 run-pipeline:       ## Run the partially agentic generative pipeline
-	uv run --env-file .env python -m starter_project.basic_agent
+	uv run --env-file .env python -m starter_project
 
 .PHONY: clean
 clean:      ## Clean
