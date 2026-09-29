@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from typing import TypedDict, Optional
 from dotenv import load_dotenv
@@ -5,6 +6,13 @@ from langchain_litellm import ChatLiteLLM
 from langchain_core.messages import SystemMessage, HumanMessage
 from langgraph.graph import StateGraph, START, END
 from gen_ai_hub.proxy.native.sap.client import RPTClient
+from gen_ai_hub.document_grounding.client import RetrievalAPIClient
+from gen_ai_hub.document_grounding.models.retrieval import (
+    RetrievalSearchInput,
+    RetrievalSearchFilter,
+)
+from gen_ai_hub.orchestration.models.document_grounding import DataRepositoryType
+
 import json
 
 from config.agents import APPRAISER_AGENT, EVIDENCE_ANALYST_AGENT, LEAD_DETECTIVE
@@ -36,11 +44,26 @@ def call_rpt1(payload: dict) -> str:
     except Exception as e:
         return f"Error calling RPT-1: {str(e)}"
 
-
 def call_grounding_service(user_question: str) -> str:
     """Search the evidence database for information about suspects, alibis, and motives."""
-    # Placeholder — will be replaced with the real grounding tool in Exercise 05
-    return f"Grounding service not yet configured. Query received: {user_question}"
+    retrieval_client = RetrievalAPIClient()
+
+    search_filter = RetrievalSearchFilter(
+        id="vector",
+        dataRepositoryType=DataRepositoryType.VECTOR.value,
+        dataRepositories=[os.environ.get('PIPELINE_ID')],
+        searchConfiguration={
+            "maxChunkCount": 5  # Retrieve top 5 most relevant document chunks
+        },
+    )
+
+    search_input = RetrievalSearchInput(
+        query=user_question,
+        filters=[search_filter],
+    )
+
+    response = retrieval_client.search(search_input)
+    return json.dumps(response.model_dump(), indent=2)
 
 # Initialize the shared LLM
 model = ChatLiteLLM(model="sap/gemini-2.5-flash-lite", temperature=0)
