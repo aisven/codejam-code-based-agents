@@ -24,8 +24,8 @@ dependencies = [
     "langchain-litellm==0.10.0",
     "litellm==1.103.0",
     "python-dotenv==1.2.3",
-    "sap-ai-sdk-gen==7.4.1",
-    "a2a-sdk==1.2.0",
+    "sap-ai-sdk-gen==6.7.0",
+    "a2a-sdk==0.3.25",
     "fastapi==0.141.1"
 ]
 
