@@ -19,6 +19,7 @@ readme = "README.md"
 requires-python = ">=3.14.7,<3.15"
 dependencies = [
     "langgraph==1.2.12",
+    "langgraph-supervisor==0.0.31",
     "langchain-core==1.6.5",
     "langchain-litellm==0.10.0",
     "litellm==1.103.0",
