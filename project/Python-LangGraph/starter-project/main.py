@@ -8,6 +8,7 @@ def main():
         "suspect_names": "Sophie Dubois, Marcus Chen, Viktor Petrov",
         "appraisal_result": None,
         "evidence_analysis": None,
+        "intelligence_report": None,  # ← NEW
         "final_conclusion": None,
         "messages": [],
     })
@@ -22,10 +23,10 @@ def main():
     print("="*50)
     print(result["evidence_analysis"] or "(not set)")
 
-    print("\n" + "="*50)
-    print("Investigation Report:")
-    print("="*50)
-    print(result["final_conclusion"] or "Investigation completed but no conclusion was reached.")
+    print("\n" + "=" * 50)
+    print("Intelligence Report:")
+    print("=" * 50)
+    print(result["intelligence_report"] or "(not set)")
 
 
 if __name__ == "__main__":
