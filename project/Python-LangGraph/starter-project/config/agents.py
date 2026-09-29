@@ -47,7 +47,11 @@ def _lead_detective_prompt(appraisal_result: str, evidence_analysis: str, intell
         "- Note any alibis or evidence that clears the other suspects\n"
         "- State the total insured value of the stolen goods\n"
         "- Assess whether this is an isolated incident or part of a larger criminal network\n"
-        "- Provide a comprehensive summary of the case."
+        "- Provide a comprehensive summary of the case. "
+        "Before naming a suspect, reason through each one: "
+        "who had access to the museum, who had financial motive, "
+        "and whose alibi does not hold up under scrutiny. "
+        "Finally, you MUST name one suspect as the most likely thief and explain why."
     )
 
 
