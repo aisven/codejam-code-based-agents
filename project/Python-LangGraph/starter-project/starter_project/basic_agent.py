@@ -2,8 +2,13 @@ from pathlib import Path
 from typing import TypedDict, Optional
 from dotenv import load_dotenv
 
-# Load .env from the same directory as this script
-env_path = Path(__file__).parent / '.env'
+
+# Load .env from the same directory as this script, else from project root
+def locate_dot_env_file() -> Path:
+    return Path(__file__).parent / ".env" if (Path(__file__).parent / ".env").exists() else Path(__file__).parent.parent / ".env"
+
+
+env_path = locate_dot_env_file()
 load_dotenv(dotenv_path=env_path)
 
 from langchain_litellm import ChatLiteLLM
